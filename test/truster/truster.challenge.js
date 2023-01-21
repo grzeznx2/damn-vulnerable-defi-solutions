@@ -21,8 +21,10 @@ describe('[Challenge] Truster', function () {
         expect(await token.balanceOf(player.address)).to.equal(0);
     });
 
-    it('Execution', async function () {
+    it.only('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
+        const TrusterAttackerFactory = await ethers.getContractFactory("TrusterAttacker", player);
+        await TrusterAttackerFactory.deploy(TOKENS_IN_POOL, pool.address, token.address);
     });
 
     after(async function () {
